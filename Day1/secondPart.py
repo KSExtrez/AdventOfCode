@@ -212,36 +212,18 @@ myNumbers = [
     1875,
 ]
 
-# Big O(n*n) works, but too slow
+# Big O(n*n*) works, but extremely slow
+# It even takes about 1 second to complete the my numbers
 def firstTry(numbers):
     start = time()
 
     for number1 in numbers:
         for number2 in numbers:
-            if number1 + number2 == 2020:
-                print(f"Result: {number1 * number2}")
-                break
+            for number3 in numbers:
+                if number1 + number2 + number3 == 2020:
+                    print(f"Result: {number1 * number2 * number3}")
+                    break
     end = time()
     print(f"Execution time is: {end - start}")
 
-# Big O(n), now looks good 😉
-def secondTry(numbers):
-    start = time()
-    dic = {}
-
-    for number in numbers:
-        dic[number] = True
-
-        toFind = 2020 - number
-
-        if dic.get(toFind):
-            print(f"Result: {number * toFind}")
-            break
-
-    end = time()
-    print(f"Execution time is: {end - start}")
-
-firstTry(myNumbers)
-
-# The second try has been executed 5x faster
-secondTry(myNumbers)
+firstTry(sampleNumbers)
