@@ -226,4 +226,27 @@ def firstTry(numbers):
     end = time()
     print(f"Execution time is: {end - start}")
 
-firstTry(sampleNumbers)
+# Big O(n*n), now it executes much more faster 😎
+def secondTry(numbers):
+    start = time()
+
+    dic = {}
+    for number1 in numbers:
+        firstFind = 2020 - number1
+
+        for number2 in numbers:
+            dic[number2] = True
+
+            secondFind = firstFind - number2
+
+            if (dic.get(secondFind)):
+                print(f"Result: {number1 * number2 * secondFind}")
+                break
+
+    end = time()
+    print(f"Execution time is: {end - start}")
+
+firstTry(myNumbers)
+
+# The second try has been executed over 100x faster
+secondTry(myNumbers)
